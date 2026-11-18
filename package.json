@@ -1,0 +1,23 @@
+{
+  "name": "webify",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "~6.3.5"
+  },
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node@^4.34.0",
+    "esbuild": "npm:esbuild-wasm@^0.25.0"
+  }
+}
