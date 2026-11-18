@@ -1,0 +1,461 @@
+/* ---------- Page ---------- */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2d1b3d);
+  color: white;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title on the left, user name + logout on the right */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ccc;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Player on the left, playlist on the right (they stack on small screens) */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.player,
+.playlist {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.player {
+  width: 360px;
+  text-align: center;
+}
+
+.playlist {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ---------- Spinning disc ---------- */
+.disc {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 8px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s; /* smooth colour change between songs */
+}
+
+.disc-center {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #111;
+}
+
+.disc.spinning {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.song-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.song-artist {
+  margin: 5px 0 15px;
+  color: #aaa;
+}
+
+/* ---------- Visualizer ---------- */
+.visualizer {
+  width: 100%;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+/* ---------- Progress bar & volume ---------- */
+.progress,
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.progress input,
+.volume input {
+  flex: 1;
+  accent-color: #e84393; /* colours the slider */
+  cursor: pointer;
+}
+
+/* ---------- Buttons ---------- */
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.control-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.control-button:hover {
+  transform: scale(1.2);
+}
+
+.control-button.active {
+  color: #e84393;
+}
+
+.play-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: #e84393;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+  background-color: #d63384;
+}
+
+/* ---------- Playlist ---------- */
+.playlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playlist-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.add-button {
+  background-color: #e84393;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: #d63384;
+}
+
+/* ---------- Search bar ---------- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 0 14px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #aaa;
+  transition: border-color 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: #e84393;
+}
+
+.search-bar input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  padding: 11px 0;
+}
+
+.no-results {
+  color: #aaa;
+  text-align: center;
+  margin-top: 25px;
+}
+
+/* ---------- Theme buttons ---------- */
+.themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.theme-button {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.theme-button:hover {
+  border-color: #e84393;
+}
+
+.theme-button.active {
+  background-color: #e84393;
+  border-color: #e84393;
+}
+
+.playlist ul {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+}
+
+.song {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  animation: fadeIn 0.4s;
+}
+
+.song:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.song.active {
+  background-color: rgba(232, 67, 147, 0.25);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.song-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-info p {
+  margin: 0;
+}
+
+.song-info .title {
+  font-weight: bold;
+}
+
+.song-info .artist {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.now-playing {
+  font-size: 12px;
+  color: #e84393;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-button:hover {
+  color: #ff6b6b;
+}
+
+/* ---------- Login page ---------- */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 360px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 35px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  animation: fadeIn 0.5s;
+}
+
+.login-logo {
+  margin-bottom: 10px;
+}
+
+.login-box h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.login-subtitle {
+  color: #aaa;
+  margin: 6px 0 25px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0 14px;
+  margin-bottom: 14px;
+  color: #aaa;
+  transition: border-color 0.2s;
+}
+
+.input-group:focus-within {
+  border-color: #e84393;
+}
+
+.input-group input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  padding: 13px 0;
+}
+
+.login-error {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e84393;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.login-button:hover {
+  background-color: #d63384;
+  transform: translateY(-2px);
+}
+
+.login-hint {
+  margin: 20px 0 0;
+  font-size: 13px;
+  color: #888;
+}
